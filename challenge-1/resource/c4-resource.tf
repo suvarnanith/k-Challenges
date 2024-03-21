@@ -66,3 +66,12 @@ module "key-vault" {
   resource_group_name_db = var.resource_group_name_db
   depends_on = [ module.resource_group ]
 }
+
+module "nsg" {
+  source = "../module/nsg"
+  resource_group_name_nsg = var.resource_group_name_nsg
+  nsgname = var.nsgname
+  custom_rules = var.custom_rules
+  environment = var.environment
+  
+}

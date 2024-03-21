@@ -14,14 +14,14 @@ module "storage_account_module" {
   depends_on = [ module.resource_group, module.virtual_network ]
 
 }
-
+#Azure Storage Container
 module "container_module" {
   source = "../module/Storage-Container"
   containers = var.containers
   depends_on = [ module.storage_account_module ]
   
 }
-
+#Azure Vnet and Subnet
 module "virtual_network" {
   source = "../module/virtual-network-subnet"
   vnets = var.vnets
@@ -30,6 +30,7 @@ module "virtual_network" {
   depends_on = [ module.resource_group ]
 }
 
+#Azure VM
 module "virtual_machine" {
   source = "../module/azure-vm"
   vms = var.vms
@@ -41,6 +42,7 @@ module "virtual_machine" {
   depends_on = [ module.virtual_network ]
 }
 
+#Azure Load balancer
 module "load-balancer" {
   source = "../module/load-balancer"
   load_balancers = var.load_balancers
@@ -49,6 +51,7 @@ module "load-balancer" {
   depends_on = [ module.virtual_machine ]
 }
 
+#Azure Database
 module "database" {
   source = "../module/database"
   database = var.database
@@ -59,6 +62,7 @@ module "database" {
   depends_on = [ module.resource_group, module.key-vault ]
 }
 
+#Azure Key vault
 module "key-vault" {
   source = "../module/key-vault"
   key_vault = var.key_vault

@@ -1,3 +1,7 @@
+#Stage
+environment = "dev"
+
+#Resource Group
 resource_groups = {
   rg1 = {
     name     = "rg1"
@@ -8,8 +12,9 @@ resource_groups = {
     location = "eastus"
   }
 }
-environment = "dev"
 
+
+#Storage Variable
 storage_account = {
   storage1 = {
     name                = "nistore1"
@@ -39,6 +44,21 @@ storage_account = {
   }
 }
 
+network_rules = {
+  subnet_ids1 = {
+    vnet_name = "vnet1"
+    resource_group_name  = "rg1"
+    subnet_name = "subnet1"
+  },
+  subnet_ids2 = {
+    vnet_name = "vnet1"
+    resource_group_name  = "rg1"
+    subnet_name = "subnet2"
+  }
+}
+
+#container Variable
+
 containers = {
   container1 = {
     name                  = "container1"
@@ -54,6 +74,7 @@ containers = {
   }
 }
 
+#Vnet and subnet Variable
 vnets = {
   vnet1 = {
     address_space = "10.0.0.0/16"
@@ -90,18 +111,7 @@ vnets = {
 }
 resource_group_name_vnet = "rg1"
 
-network_rules = {
-  subnet_ids1 = {
-    vnet_name = "vnet1"
-    resource_group_name  = "rg1"
-    subnet_name = "subnet1"
-  },
-  subnet_ids2 = {
-    vnet_name = "vnet1"
-    resource_group_name  = "rg1"
-    subnet_name = "subnet2"
-  }
-}
+#VM, Network Interface and Availability Set Variable
 
 nics = {
   nic1 = {
@@ -254,6 +264,8 @@ availability_set = {
 
 }
 
+#load Balancer
+
 load_balancers = {
   "lb1" = {
     name                = "lb1"
@@ -271,6 +283,8 @@ load_balancers = {
   }
 }
 resource_group_name_lb = "rg1"
+
+#DB
 resource_group_name_db = "rg1"
 
 server = {
@@ -291,6 +305,9 @@ database = {
     zone_redundant = false
   }
 }
+
+#key Vault
+
 key_vault_name = "keyvault1"
 key_vault_rg = "rg1"
 
@@ -304,6 +321,8 @@ key_vault = {
     
   }
 }
+
+#NSG
 
 network_security_group = {
   "1" = {
@@ -321,7 +340,7 @@ custom_rules = [
       direction              = "Inbound"
       nsgname                = "nsg1"
       access                 = "Allow"
-      protocol               = "tcp"
+      protocol               = "Tcp"
       source_port_range      = "*"
       destination_port_range = "22"
       source_address_prefix  = "10.151.0.0/24"
@@ -333,7 +352,7 @@ custom_rules = [
       direction               = "Inbound"
       nsgname                 = "nsg2"
       access                  = "Allow"
-      protocol                = "tcp"
+      protocol                = "Tcp"
       source_port_range       = "*"
       destination_port_range  = "8080"
       source_address_prefixes = ["10.151.0.0/24", "10.151.1.0/24"]

@@ -202,19 +202,6 @@ variable "custom_rules" {
   description = "Security rules for the network security group using this format name = [name, priority, direction, access, protocol, source_port_range, destination_port_range, source_address_prefix, destination_address_prefix, description]"
 }
 
-
-variable "network_security_group" {
-    type = map(object({
-    name = string
-  }))
-
-}
-variable "environment" {
-    type = string
-    description = "The environment in which the resources will be created"
-  
-}
-
 variable "nsgname" {
   type = string
   description = "NSG Name"
